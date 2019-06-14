@@ -1,3 +1,9 @@
+package com.sprintchallenge.todo;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
 @Transactional
 @Component
 public class SeedData implements CommandLineRunner
