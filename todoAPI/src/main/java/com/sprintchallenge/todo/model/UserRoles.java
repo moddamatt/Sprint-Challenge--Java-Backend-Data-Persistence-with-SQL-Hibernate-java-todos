@@ -1,4 +1,4 @@
-package com.sprintchallenge.todo.models;
+package com.sprintchallenge.todo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -12,13 +12,13 @@ public class UserRoles extends Auditable implements Serializable
 {
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties({"userRoles", "hibernateLazyInitializer"})
+    @JsonIgnoreProperties("userRoles")
     @JoinColumn(name = "userid")
     private User user;
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties({"userRoles", "hibernateLazyInitializer"})
+    @JsonIgnoreProperties("userRoles")
     @JoinColumn(name = "roleid")
     private Role role;
 
@@ -65,13 +65,13 @@ public class UserRoles extends Auditable implements Serializable
             return false;
         }
         UserRoles userRoles = (UserRoles) o;
-        return user.equals(userRoles.user) &&
-                role.equals(userRoles.role);
+        return getUser().equals((userRoles.getUser())) && getRole().equals(userRoles.getRole());
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(user, role);
+        return Objects.hash(getUser(), getRole());
     }
 }
+

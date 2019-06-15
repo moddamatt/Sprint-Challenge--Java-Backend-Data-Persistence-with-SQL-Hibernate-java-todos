@@ -1,9 +1,9 @@
 package com.sprintchallenge.todo;
 
-import com.sprintchallenge.todo.models.Role;
-import com.sprintchallenge.todo.models.Todo;
-import com.sprintchallenge.todo.models.User;
-import com.sprintchallenge.todo.models.UserRoles;
+import com.sprintchallenge.todo.model.Role;
+import com.sprintchallenge.todo.model.Todo;
+import com.sprintchallenge.todo.model.User;
+import com.sprintchallenge.todo.model.UserRoles;
 import com.sprintchallenge.todo.repository.RoleRepository;
 import com.sprintchallenge.todo.repository.TodoRepository;
 import com.sprintchallenge.todo.repository.UserRepository;

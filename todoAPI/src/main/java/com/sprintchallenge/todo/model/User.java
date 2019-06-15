@@ -1,12 +1,15 @@
-package com.sprintchallenge.todo.models;
+package com.sprintchallenge.todo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
+// User is considered the parent entity of all - the Grand Poobah!
 
 @Entity
 @Table(name = "users")
@@ -23,7 +26,8 @@ public class User extends Auditable
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",
+                cascade = CascadeType.ALL)
     @JsonIgnoreProperties("user")
     private List<UserRoles> userRoles = new ArrayList<>();
 
@@ -41,44 +45,30 @@ public class User extends Auditable
 
     public User(String username, String password, List<UserRoles> userRoles, List<UserTodos> todos)
     {
-        this.username = username;
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        this.password = passwordEncoder.encode(password);
+        setUsername(username);
+        setPassword(password);
+        for (UserRoles ur : userRoles)
+        {
+            ur.setUser(this);
+        }
         this.userRoles = userRoles;
         this.todos = todos;
     }
 
     public User(String username, String password, List<UserRoles> userRoles)
     {
-        this.username = username;
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        this.password = passwordEncoder.encode(password);
+        setUsername(username);
+        setPassword(password);
+        for (UserRoles ur : userRoles)
+        {
+            ur.setUser(this);
+        }
         this.userRoles = userRoles;
-    }
-
-    public List<Todo> getTodoslist()
-    {
-        return todoslist;
-    }
-
-    public void setTodoslist(List<Todo> todoslist)
-    {
-        this.todoslist = todoslist;
     }
 
     public long getUserid()
     {
         return userid;
-    }
-
-    public List<UserTodos> getTodos()
-    {
-        return todos;
-    }
-
-    public void setTodos(List<UserTodos> todos)
-    {
-        this.todos = todos;
     }
 
     public void setUserid(long userid)
@@ -107,6 +97,11 @@ public class User extends Auditable
         this.password = passwordEncoder.encode(password);
     }
 
+    public void setPasswordNoEncrypt(String password)
+    {
+        this.password = password;
+    }
+
     public List<UserRoles> getUserRoles()
     {
         return userRoles;
@@ -116,6 +111,27 @@ public class User extends Auditable
     {
         this.userRoles = userRoles;
     }
+
+    public List<Todo> getTodoslist()
+    {
+        return todoslist;
+    }
+
+    public void setTodoslist(List<Todo> todoslist)
+    {
+        this.todoslist = todoslist;
+    }
+
+    public List<UserTodos> getTodos()
+    {
+        return todos;
+    }
+
+    public void setTodos(List<UserTodos> todos)
+    {
+        this.todos = todos;
+    }
+
 
     public List<SimpleGrantedAuthority> getAuthority()
     {

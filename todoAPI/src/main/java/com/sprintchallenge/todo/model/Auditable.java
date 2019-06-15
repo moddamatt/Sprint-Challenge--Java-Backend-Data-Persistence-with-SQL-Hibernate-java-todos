@@ -1,4 +1,4 @@
-package com.sprintchallenge.todo.models;
+package com.sprintchallenge.todo.model;
 
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -12,6 +12,7 @@ import javax.persistence.Temporal;
 import java.util.Date;
 
 import static javax.persistence.TemporalType.TIMESTAMP;
+
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)

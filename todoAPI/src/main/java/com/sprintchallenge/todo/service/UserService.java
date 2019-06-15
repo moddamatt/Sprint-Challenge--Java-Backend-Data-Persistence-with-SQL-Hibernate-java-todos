@@ -1,7 +1,8 @@
-package com.sprintchallenge.todo.serivces;
+package com.sprintchallenge.todo.service;
 
-import com.sprintchallenge.todo.models.Todo;
-import com.sprintchallenge.todo.models.User;
+import com.sprintchallenge.todo.model.Todo;
+import com.sprintchallenge.todo.model.User;
+
 import java.util.List;
 
 public interface UserService {

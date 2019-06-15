@@ -1,10 +1,11 @@
-package com.sprintchallenge.todo.serivces;
+package com.sprintchallenge.todo.service;
 
-import com.sprintchallenge.todo.models.Todo;
+import com.sprintchallenge.todo.model.Todo;
 import com.sprintchallenge.todo.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.EntityNotFoundException;
 
 @Service(value = "todoService")

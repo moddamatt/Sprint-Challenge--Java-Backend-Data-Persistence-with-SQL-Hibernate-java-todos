@@ -1,8 +1,8 @@
-package com.sprintchallenge.todo.serivces;
+package com.sprintchallenge.todo.service;
 
-import com.sprintchallenge.todo.models.Todo;
-import com.sprintchallenge.todo.models.User;
-import com.sprintchallenge.todo.models.UserRoles;
+import com.sprintchallenge.todo.model.Todo;
+import com.sprintchallenge.todo.model.User;
+import com.sprintchallenge.todo.model.UserRoles;
 import com.sprintchallenge.todo.repository.RoleRepository;
 import com.sprintchallenge.todo.repository.TodoRepository;
 import com.sprintchallenge.todo.repository.UserRepository;
@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;

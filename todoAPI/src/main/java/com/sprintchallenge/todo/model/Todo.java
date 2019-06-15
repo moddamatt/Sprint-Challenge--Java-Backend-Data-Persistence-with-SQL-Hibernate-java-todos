@@ -1,4 +1,4 @@
-package com.sprintchallenge.todo.models;
+package com.sprintchallenge.todo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

@@ -1,4 +1,4 @@
-package com.sprintchallenge.todo.models;
+package com.sprintchallenge.todo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -16,10 +16,10 @@ public class Role extends Auditable
 
     @Column(nullable = false,
             unique = true)
-    private String name;
+    String name;
 
     @OneToMany(mappedBy = "role",
-            cascade = CascadeType.ALL)
+               cascade = CascadeType.ALL)
     @JsonIgnoreProperties("role")
     private List<UserRoles> userRoles = new ArrayList<>();
 

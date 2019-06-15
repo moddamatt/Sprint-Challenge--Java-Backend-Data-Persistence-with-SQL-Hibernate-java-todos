@@ -1,7 +1,6 @@
 package com.sprintchallenge.todo.repository;
 
-
-import com.sprintchallenge.todo.models.Todo;
+import com.sprintchallenge.todo.model.Todo;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

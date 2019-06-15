@@ -25,18 +25,19 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter
     {
         // http.anonymous().disable();
         http.authorizeRequests()
-                .antMatchers("/",                       // h2
-                        "/v2/api-docs",            // swagger
-                        "/swagger-resources",      // swagger
-                        "/swagger-resources/**",   // swagger
-                        "/configuration/ui",       // swagger
-                        "/configuration/security", // swagger
-                        "/swagger-ui.html",        // swagger
-                        "/webjars/**"              // swagger
-                ).permitAll()
-                .antMatchers("/users/mine", "/users/todo/{userid}", "/todos/todoid/{todoid}").authenticated()
-                .antMatchers("/admin/**", "/users/**").hasAnyRole("ROLE_ADMIN")
-                .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
+            .antMatchers("/",                       // h2
+                                   "/h2-console/**",          // h2
+                                   "/v2/api-docs",            // swagger
+                                   "/swagger-resources",      // swagger
+                                   "/swagger-resources/**",   // swagger
+                                   "/configuration/ui",       // swagger
+                                   "/configuration/security", // swagger
+                                   "/swagger-ui.html",        // swagger
+                                   "/webjars/**"              // swagger
+                        ).permitAll()
+                .antMatchers("/users/**", "/quotes/**").authenticated()
+                .antMatchers("/roles", "/actuator/**").hasAnyRole("ROLE_ADMIN")
+            .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
 
         // http.requiresChannel().anyRequest().requiresSecure();
         http.csrf().disable();
